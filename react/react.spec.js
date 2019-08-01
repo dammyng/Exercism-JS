@@ -6,20 +6,20 @@ describe('React module', () => {
     expect(inputCell.value).toEqual(10);
   });
 
-  xtest('allows input cell value to be set', () => {
+  test('allows input cell value to be set', () => {
     const inputCell = new InputCell(4);
     inputCell.setValue(20);
     expect(inputCell.value).toEqual(20);
   });
 
-  xtest('allows setting compute cells', () => {
+  test('allows setting compute cells', () => {
     const inputCell = new InputCell(1);
     const fn = inputCells => inputCells[0].value + 1;
     const computeCell = new ComputeCell([inputCell], fn);
     expect(computeCell.value).toEqual(2);
   });
 
-  xtest('compute cell takes inputs in correct order', () => {
+  test('compute cell takes inputs in correct order', () => {
     const inputCells = [
       new InputCell(1),
       new InputCell(2),
@@ -33,7 +33,7 @@ describe('React module', () => {
     expect(computeCell.value).toEqual(21);
   });
 
-  xtest('compute cells update value when inputs are changed', () => {
+  test('compute cells update value when inputs are changed', () => {
     const inputCell = new InputCell(1);
     const computeCell = new ComputeCell(
       [inputCell],
