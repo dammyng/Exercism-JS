@@ -7,13 +7,6 @@ export const validate = (value) => {
   let vLength = String(value).length
   let sum = null
 
-  if(vLength ==1)
-    return true
-
-  if(vLength ==2)
-    return false
-  
-  if(vLength > 2)
     for (let index = 0; index < vLength; index++) {
       sum += getDigit(value, index) ** vLength
     }
