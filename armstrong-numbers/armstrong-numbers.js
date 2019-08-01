@@ -10,9 +10,8 @@ export const validate = (value) => {
     for (let index = 0; index < vLength; index++) {
       sum += getDigit(value, index) ** vLength
     }
-    if(sum && sum == value)
-      return true
-    return false
+    return sum == value
+  
 };
 
 
