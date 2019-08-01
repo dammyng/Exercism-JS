@@ -3,6 +3,27 @@
 // convenience to get you started writing code faster.
 //
 
-export const validate = () => {
-  throw new Error("Remove this statement and implement this function");
+export const validate = (value) => {
+  let vLength = String(value).length
+  let sum = null
+
+  if(vLength ==1)
+    return true
+
+  if(vLength ==2)
+    return false
+  
+  if(vLength > 2)
+    for (let index = 0; index < vLength; index++) {
+      sum += getDigit(value, index) ** vLength
+    }
+    if(sum && sum == value)
+      return true
+    return false
 };
+
+
+ let getDigit = (number,n) => {
+  let digit =  parseInt(String(number).charAt(n))
+  return digit
+}
