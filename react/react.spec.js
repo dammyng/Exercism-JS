@@ -1,25 +1,25 @@
 import { InputCell, ComputeCell, CallbackCell } from './react';
 
 describe('React module', () => {
-  test('accepts input', () => {
+  xtest('accepts input', () => {
     const inputCell = new InputCell(10);
     expect(inputCell.value).toEqual(10);
   });
 
-  test('allows input cell value to be set', () => {
+  xtest('allows input cell value to be set', () => {
     const inputCell = new InputCell(4);
     inputCell.setValue(20);
     expect(inputCell.value).toEqual(20);
   });
 
-  test('allows setting compute cells', () => {
+  xtest('allows setting compute cells', () => {
     const inputCell = new InputCell(1);
     const fn = inputCells => inputCells[0].value + 1;
     const computeCell = new ComputeCell([inputCell], fn);
     expect(computeCell.value).toEqual(2);
   });
 
-  test('compute cell takes inputs in correct order', () => {
+  xtest('compute cell takes inputs in correct order', () => {
     const inputCells = [
       new InputCell(1),
       new InputCell(2),
@@ -39,7 +39,12 @@ describe('React module', () => {
       [inputCell],
       inputs => inputs[0].value + 1,
     );
+
+    //console.log(computeCell)
+
     inputCell.setValue(3);
+    //console.log(computeCell)
+
     expect(computeCell.value).toEqual(4);
   });
 
