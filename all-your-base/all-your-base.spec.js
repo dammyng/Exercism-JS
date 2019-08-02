@@ -1,7 +1,7 @@
 import { convert } from './all-your-base';
 
 describe('Converter', () => {
-  test('single bit one to decimal', () => {
+  xtest('single bit one to decimal', () => {
     expect(convert([1], 2, 10)).toEqual([1]);
   });
 
@@ -13,7 +13,7 @@ describe('Converter', () => {
     expect(convert([5], 10, 2)).toEqual([1, 0, 1]);
   });
 
-  test('binary to multiple decimal', () => {
+  xtest('binary to multiple decimal', () => {
     expect(convert([1, 0, 1, 0, 1, 0], 2, 10)).toEqual([4, 2]);
   });
 
@@ -43,7 +43,7 @@ describe('Converter', () => {
     expect(convert([0], 10, 2)).toEqual([0]);
   });
 
-  xtest('multiple zeros', () => {
+  test('multiple zeros', () => {
     expect(() => {
       convert([0, 0, 0], 10, 2);
     }).toThrow(new Error('Input has wrong format'));
