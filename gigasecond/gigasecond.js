@@ -3,7 +3,7 @@
 // convenience to get you started writing code faster.
 //
 
-export const gigasecond = (givenMoment) =>  new Date(givenMoment.getTime() + gigaMillieconds)
+export const gigasecond = (givenMoment) =>  new Date(givenMoment.getTime() + gigaMilliSeconds)
 
 
-const gigaMillieconds = Math.pow(10,12)
+const gigaMilliSeconds = 1e12
