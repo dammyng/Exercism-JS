@@ -4,18 +4,17 @@
 //
 
 export const validate = (value) => {
-  let vLength = String(value).length
-  let sum = null
+  let vArray = [...String(value)]
+  let sum = 0
 
-    for (let index = 0; index < vLength; index++) {
-      sum += getDigit(value, index) ** vLength
-    }
-    return sum == value
-  
+  vArray.map((_, index) =>
+    sum += getDigit(value, index) ** vArray.length
+  )
+  return sum == value
 };
 
 
- let getDigit = (number,n) => {
-  let digit =  parseInt(String(number).charAt(n))
+let getDigit = (number, n) => {
+  let digit = parseInt(String(number).charAt(n))
   return digit
 }

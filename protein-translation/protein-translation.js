@@ -7,38 +7,39 @@ export const translate = (codons) => {
   let protein = []
   if (codons) {
     var splitProtein = codons.match(/.{3}/g)
-    splitProtein.map(item => {
-      let result = condoCheck(item)
-      result == null ? splitProtein.length = 0 :
-        protein.push(result)
-    })
-    return protein
-  } else {
-    return protein
+
+    for (let i = 0; i < splitProtein.length; i++) {
+      const element = splitProtein[i];
+      let result = RNATable[element]
+
+      if (!result)
+        throw new Error("Invalid codon")
+
+      if (result && result == 'STOP') break
+      protein.push(result)
+    }
   }
+
+  return protein
+
 };
 
-let condoCheck = (condo) => {
-  let protein = null
-
-  if (condo == "AUG")
-    protein = "Methionine"
-  else if (condo == "UUU" || condo == "UUC") {
-    protein = "Phenylalanine"
-  } else if (condo == "UUA" || condo == "UUG") {
-    protein = "Leucine"
-  } else if (condo == "UCU" || condo == "UCC" || condo == "UCA" || condo == "UCG") {
-    protein = "Serine"
-  } else if (condo == "UAU" || condo == "UAC") {
-    protein = "Tyrosine"
-  } else if (condo == "UGU" || condo == "UGC") {
-    protein = "Cysteine"
-  } else if (condo == "UGG") {
-    protein = "Tryptophan"
-  } else if (condo == "UAA" || condo == "UAG" || condo == "UGA") {
-    protein = null
-  } else {
-    throw new Error("Invalid codon")
-  }
-  return protein
+let RNATable = {
+  'AUG': "Methionine",
+  'UUU': 'Phenylalanine',
+  'UUC': 'Phenylalanine',
+  'UUA': 'Leucine',
+  'UUG': 'Leucine',
+  'UCU': 'Serine',
+  'UCC': 'Serine',
+  'UCA': 'Serine',
+  'UCG': 'Serine',
+  'UAU': 'Tyrosine',
+  'UAC': 'Tyrosine',
+  'UGU': 'Cysteine',
+  'UGC': 'Cysteine',
+  'UGG': 'Tryptophan',
+  'UAA': 'STOP',
+  'UAG': 'STOP',
+  'UGA': 'STOP'
 }
