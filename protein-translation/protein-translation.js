@@ -6,23 +6,24 @@
 export const translate = (codons) => {
   let protein = []
   if (codons) {
-    var splitProtein = codons.match(/.{3}/g)
+    const RNAArray = splitProtein(codons)
+    for (let i = 0; i < RNAArray.length; i++) {
+      const element = RNAArray[i];
+      let RNA = RNATable[element]
 
-    for (let i = 0; i < splitProtein.length; i++) {
-      const element = splitProtein[i];
-      let result = RNATable[element]
-
-      if (!result)
+      if (!RNA)
         throw new Error("Invalid codon")
 
-      if (result && result == 'STOP') break
-      protein.push(result)
+      if (RNA && RNA == 'STOP') break
+      protein.push(RNA)
     }
   }
 
   return protein
 
 };
+
+export const splitProtein = (codons) => codons.match(/.{3}/g)
 
 let RNATable = {
   'AUG': "Methionine",

@@ -1,6 +1,11 @@
-import { translate } from './protein-translation';
+import { translate,splitProtein } from './protein-translation';
 
 describe('ProteinTranslation', () => {
+
+  test('Split Protein String', () => {
+    expect(splitProtein('AUGUUUUUC')).toEqual(['AUG', 'UUU', 'UUC']);
+  });
+
   test('Empty RNA has no proteins', () => {
     expect(translate()).toEqual([]);
   });
