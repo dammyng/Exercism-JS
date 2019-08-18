@@ -14,7 +14,7 @@ export const translate = (codons) => {
       if (!RNA)
         throw new Error("Invalid codon")
 
-      if (RNA && RNA == 'STOP') break
+      if (RNA && RNA == StopCondo) break
       protein.push(RNA)
     }
   }
@@ -23,24 +23,31 @@ export const translate = (codons) => {
 
 };
 
-export const splitProtein = (codons) => codons.match(/.{3}/g)
+export const splitProtein = (codons) => codons.match(/.{1,3}/g)
+
+const StopCondo = "STOP"
+const Phenylalanine = "Phenylalanine"
+const Leucine = "Leucine"
+const Serine = "Serine"
+const Tyrosine = "Tyrosine"
+const Cysteine = "Cysteine"
 
 let RNATable = {
   'AUG': "Methionine",
-  'UUU': 'Phenylalanine',
-  'UUC': 'Phenylalanine',
-  'UUA': 'Leucine',
-  'UUG': 'Leucine',
-  'UCU': 'Serine',
-  'UCC': 'Serine',
-  'UCA': 'Serine',
-  'UCG': 'Serine',
-  'UAU': 'Tyrosine',
-  'UAC': 'Tyrosine',
-  'UGU': 'Cysteine',
-  'UGC': 'Cysteine',
+  'UUU': Phenylalanine,
+  'UUC': Phenylalanine,
+  'UUA': Leucine,
+  'UUG': Leucine,
+  'UCU': Serine,
+  'UCC': Serine,
+  'UCA': Serine,
+  'UCG': Serine,
+  'UAU': Tyrosine,
+  'UAC': Tyrosine,
+  'UGU': Cysteine,
+  'UGC': Cysteine,
   'UGG': 'Tryptophan',
-  'UAA': 'STOP',
-  'UAG': 'STOP',
-  'UGA': 'STOP'
+  'UAA': StopCondo,
+  'UAG': StopCondo,
+  'UGA': StopCondo,
 }
