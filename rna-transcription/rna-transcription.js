@@ -3,6 +3,14 @@
 // convenience to get you started writing code faster.
 //
 
-export const toRna = () => {
-  throw new Error("Remove this statement and implement this function");
-};
+export const toRna = (DNA) =>
+  DNA.split('').map(DnaChar => DnaRnaTable[DnaChar]).join('')
+
+
+let DnaRnaTable = {
+'G': 'C',
+'C':'G',
+'T':'A',
+'A':'U',
+'':''
+}
