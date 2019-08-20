@@ -61,4 +61,8 @@ describe('ProteinTranslation', () => {
   test('Invalid codon throws error', () => {
     expect(() => translate('LOL')).toThrow(new Error('Invalid codon'));
   });
+
+  test('Condo length must be divisible by 3', () => {
+    expect(()=>translate('UGAUGUU')).toThrow(new Error('Invalid codon'));
+  });
 });

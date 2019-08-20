@@ -4,16 +4,18 @@
 //
 
 export const translate = (codons) => {
+
   let protein = []
   if (codons) {
+    if(codons.length % 3 != 0)
+      throw new Error("Invalid codon")
+
     const RNAArray = splitProtein(codons)
     for (let i = 0; i < RNAArray.length; i++) {
       const element = RNAArray[i];
       let RNA = RNATable[element]
-
       if (!RNA)
         throw new Error("Invalid codon")
-
       if (RNA && RNA == StopCondo) break
       protein.push(RNA)
     }
