@@ -4,5 +4,6 @@
 //
 
 export const isPangram = (sentence) => {
-
+  var regex = /([a-z])(?!.*\1)/g;
+  return (sentence.toLowerCase().match(regex) || []).length >= 26;
 };
