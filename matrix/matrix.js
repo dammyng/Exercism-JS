@@ -1,5 +1,3 @@
-
-
 export class Matrix {
   constructor(matrixString) {
     this.matrixString = matrixString
@@ -7,24 +5,31 @@ export class Matrix {
 
 
   get rows() {
-    return splitAtNewline(this.matrixString).map(rowItem=> [...rowItem]).map(i=>i.map(j=>Number(j)))
-
+    let rowString = createRowStringArray(this.matrixString)
+    let rowStringIntoNumberArray = turnEachRowStringIntoNumberArray(rowString)
+    return rowStringIntoNumberArray
   }
 
   get columns() {
-    let h= []
-    let k = []
-    const row = this.rows
-    var longs = row.reduce((a, b) => (a.length > b.length ? a : b),[]).length
+    let columns = []
+    let columnItem = []
 
-    for (let i = 0; i < longs; i++) {
-      row.forEach(element => {
-        k.push(element[i])
+    const rowsArray = this.rows
+    // a, b is used for basic comparator
+    var longestRowLength = rowsArray.reduce((a, b) => (a.length > b.length ? a : b), []).length
+
+    //Since the longest row will determine the number of columns
+    for (let i = 0; i < longestRowLength; i++) {
+      rowsArray.forEach(row => {
+        columnItem.push(row[i])
       });
-      h.push(k)
-      k=[]
+      columns.push(columnItem)
+      columnItem = []
     }
-return h  }
+    return columns
+  }
 }
-let splitAtNewline = (matrixString) => matrixString.split("\n").map(item=> item.split(' '))
 
+
+let createRowStringArray = (matrixString) => matrixString.split("\n")
+let turnEachRowStringIntoNumberArray = (rowStringArray) => rowStringArray.map(rowString => rowString.split(' ').map(Number))
