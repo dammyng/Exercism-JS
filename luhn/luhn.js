@@ -1,25 +1,19 @@
-//
-// This is only a SKELETON file for the 'Luhn' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
 
 export class Luhn {
   constructor(value) {
-    this.valueArray = [...value.split(' ').join('')].map(i=>Number(i)).reverse()
-
-
+    this.valueNumberArray = [...value.split(' ').join('')].map(Number).reverse()
   }
 
   get valid() {
   
-    if(this.valueArray.length <2)
-      return false
+    if(this.valueNumberArray.length <2)
+        return false
     
     const REG = /^\d+$/;
-      if (REG.test(this.valueArray.join()))
+    if (REG.test(this.valueNumberArray.join()))
        return false
 
-   let sum =  doubles(this.valueArray).reduce(function(accumulator, currentValue, currentIndex, array) {
+   let sum =  doubleSecondItem_BarNine(this.valueNumberArray).reduce(function(accumulator, currentValue) {
       return accumulator + currentValue;
     });
 
@@ -27,12 +21,20 @@ export class Luhn {
   }
 }
 
-let doubles = (valueArray)=>{
-  return valueArray.map((v,i)=>{
-    if (i %2 ==1){
-       let a = v *2 
-       return a >9? a-9 :a
+const NINE = 9
+
+let doubleSecondItem_BarNine = (valueArray)=>{
+  return valueArray.map((value,i)=>{
+    if (i % 2 ==1){
+       let _2_x_value = value *2 
+       return barNine(_2_x_value)
     }
-    return v
+    return value
   })
+}
+
+
+
+let barNine =(digit)=>{
+  return digit > NINE? digit - NINE : digit
 }
