@@ -1,7 +1,7 @@
 import { Allergies } from './allergies';
 
 describe('Allergies', () => {
-  test('no allergies at all', () => {
+  xtest('no allergies at all', () => {
     const allergies = new Allergies(0);
     expect(allergies.list()).toEqual([]);
   });
@@ -58,7 +58,7 @@ describe('Allergies', () => {
     expect(allergies.allergicTo('eggs')).toEqual(true);
   });
 
-  xtest('ignore non allergen score parts', () => {
+  test('ignore non allergen score parts', () => {
     const allergies = new Allergies(509);
     expect(allergies.list()).toEqual(['eggs', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats']);
   });
