@@ -1,4 +1,3 @@
-const allergies = ['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'];
 
 class Allergies{
     constructor(num){
@@ -15,9 +14,17 @@ class Allergies{
     }
 }
 
+const allergies = ['eggs', 'peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'];
+
 function createList(num){
     return allergies.filter((_, i) => Math.pow(2,i) & num);
 } 
+
+
+
+
+
+
 
 module.exports = {
     Allergies
