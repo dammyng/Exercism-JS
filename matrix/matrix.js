@@ -1,17 +1,16 @@
 export class Matrix {
   constructor(matrixString) {
-    this.matrixString = matrixString
+    this.matrixRows = matrixString.split("\n").map(rowItem => rowItem.split(' ').map(Number))
   }
 
 
   get rows() {
-    let rows = this.matrixString.split("\n").map(rowItem => rowItem.split(' ').map(Number))
-    return rows
+    return this.matrixRows
   }
 
   get columns() {
     // a, b is used for basic comparator
-    var longestRow = rowsArray.reduce((a, b) => (a.length > b.length ? a : b), [])
-    return longestRow.map((_, i) => this.rows.map(row => row[i]))
+    var longestRow = this.matrixRows.reduce((a, b) => (a.length > b.length ? a : b), [])
+    return longestRow.map((_, i) => this.matrixRows.map(row => row[i]))
   }
 }
